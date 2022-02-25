@@ -21,7 +21,7 @@ print("Your Auth Token : {}").format(auth_token)
 
 The vulnerability is introduced when a token is loaded from an user input.
 
-```
+```python
 new_token = raw_input("New Auth Token : ")
 token = cPickle.loads(b64decode(new_token))
 print "Welcome {}".format(token.username)
@@ -29,7 +29,7 @@ print "Welcome {}".format(token.username)
 
 Python 2.7 documentation clearly states Pickle should never be used with untrusted sources. Let's create a malicious data that will execute arbitrary code on the server.
 
-```
+```python
 import cPickle
 from base64 import b64encode, b64decode
 
